@@ -20,19 +20,12 @@ function shuffle(array) {
 
 // Function to get the question from the selected objects
 function getQuestions(input, item) {
-	return input[item]["Question"];
-}
-
-// Function to get the answers for the selected questions
-function getAnswers(input, item) {
-	return input[item]["Answer"];
-}
-
-// Function to check if the answer is correct
-function checkAnswers(question, answer) {
-	if (question.toLowerCase() === answer) {
+	var userInput = prompt(input[item]["Question"]);
+	var answer = input[item]["Answer"];
+	if (userInput.toLowerCase() === answer) {
 		score += 1;
 	}
+	return score;
 }
 
 // Questions & answers as an array of objects
@@ -80,15 +73,10 @@ questions = shuffle(questions);
 var ask = questions.slice(0, 3);
 
 // Ask the user the three questions and check the answers
-var first = prompt(getQuestions(ask, 0));
-var second = prompt(getQuestions(ask, 1));
-var third = prompt(getQuestions(ask, 2));
-
-// Declare score variable and check user's answers
 var score = 0;
-first = checkAnswers(first, getAnswers(ask, 0));
-second = checkAnswers(second, getAnswers(ask, 1));
-third = checkAnswers(third, getAnswers(ask, 2));
+var first = getQuestions(ask, 0);
+var second = getQuestions(ask, 1);
+var third = getQuestions(ask, 2);
 
 // Tell the user how they did
 if (score > 2) {
